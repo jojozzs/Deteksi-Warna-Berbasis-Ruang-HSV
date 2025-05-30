@@ -1,15 +1,13 @@
-% Sistem Deteksi Warna Optimized untuk Penderita Buta Warna
-% Focus pada warna-warna yang sulit dibedakan oleh penderita buta warna
 clc; clear; close all;
 
 % Inisialisasi video
 vid = VideoReader('teswarna.mp4');
 
 % PENGATURAN TEXT POSITION - FIXED KE POJOK KIRI ATAS
-TEXT_POSITION = 1;  % Fixed ke Top-Left saja
+TEXT_POSITION = 1;  % 
 
 % PENGATURAN BATASAN DETEKSI - FIX UNTUK ERROR
-MAX_COLORS_PER_FRAME = 3;  % Maksimal 3 warna per frame
+MAX_COLORS_PER_FRAME = 3; 
 
 % WARNA LENGKAP UNTUK DETEKSI (12 warna)
 colorRanges = containers.Map();
@@ -56,9 +54,9 @@ frameCount = 0;
 figure('Name', 'Optimized Color Detection for Color Blind', 'Position', [100, 100, 900, 700]);
 
 % Parameter untuk mengurangi noise detection
-MIN_AREA = 1000;        % Area minimum objek (diperbesar)
-MIN_SOLIDITY = 0.6;     % Soliditas minimum (bentuk lebih solid)
-MAX_OBJECTS_PER_COLOR = 3;  % Maksimum 3 objek per warna per frame
+MIN_AREA = 1000;        
+MIN_SOLIDITY = 0.6;     
+MAX_OBJECTS_PER_COLOR = 3; 
 
 while hasFrame(vid)
     frameCount = frameCount + 1;
@@ -72,7 +70,7 @@ while hasFrame(vid)
     
     totalDetections = 0;
     colorList = {};
-    allDetections = [];  % Untuk menyimpan semua deteksi
+    allDetections = [];  
     
     % Iterasi untuk setiap warna dan kumpulkan semua deteksi
     colorKeys = keys(colorRanges);
@@ -91,12 +89,12 @@ while hasFrame(vid)
                (V >= v_min & V <= v_max);
         
         % Enhanced pre-processing untuk mengurangi noise
-        mask = medfilt2(mask, [5, 5]);           % Median filter lebih besar
+        mask = medfilt2(mask, [5, 5]);          
         se1 = strel('disk', 3);
-        mask = imopen(mask, se1);                % Opening lebih agresif
+        mask = imopen(mask, se1);                
         se2 = strel('disk', 4);
-        mask = imclose(mask, se2);               % Closing lebih agresif
-        mask = bwareaopen(mask, MIN_AREA);       % Area minimum lebih besar
+        mask = imclose(mask, se2);               
+        mask = bwareaopen(mask, MIN_AREA);      
         
         % Analisis objek dengan filter tambahan
         labeled = bwlabel(mask);
