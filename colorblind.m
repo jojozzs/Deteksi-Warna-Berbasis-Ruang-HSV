@@ -240,22 +240,3 @@ function [textX, textY, hAlign, vAlign] = calculateTextPosition(bb, position)
     if textY < 20, textY = 20; end
 end
 
-function displayOptimizationSummary()
-    fprintf('\n=== KONFIGURASI SISTEM ===\n');
-    fprintf('1. ✓ 12 warna tersedia untuk deteksi\n');
-    fprintf('2. ✓ BATASAN: Maksimal 3 warna per frame\n');
-    fprintf('3. ✓ Prioritas: Area terbesar yang dipilih\n');
-    fprintf('4. ✓ Text selalu PUTIH untuk konsistensi\n');
-    fprintf('5. ✓ Posisi text FIXED di Top-Left\n');
-    fprintf('6. ✓ Min area filter: 1000 px\n');
-    fprintf('7. ✓ Solidity filter (>0.6)\n');
-    fprintf('8. ✓ Max 3 objek per warna yang terpilih\n');
-    fprintf('9. ✓ Enhanced morphological operations\n');
-    fprintf('10. ✓ Background text semi-transparent\n');
-    fprintf('\nWarna yang dapat dideteksi:\n');
-    fprintf('MERAH, HIJAU, BIRU, KUNING, ORANGE, UNGU,\n');
-    fprintf('PINK, CYAN, COKLAT, PUTIH, HITAM\n');
-    fprintf('\n*** HANYA 3 WARNA TERBESAR DITAMPILKAN PER FRAME ***\n');
-end
-
-displayOptimizationSummary();
